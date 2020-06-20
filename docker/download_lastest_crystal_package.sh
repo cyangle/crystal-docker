@@ -16,7 +16,7 @@ else
   package_path="/tmp/crystal.tar.gz"
 fi
 
-package_url="https://github.com/crystal-lang/crystal/releases/download/0.35.1/$package_name"
+package_url="https://github.com/crystal-lang/crystal/releases/download/${latest_tag}/$package_name"
 
 echo "latest tag is $latest_tag"
 echo "downloading latest package from $package_url"
