@@ -1,0 +1,34 @@
+version: "3.7"
+services:
+  alpine:
+    image: "${PROJECT_NAME}:alpine-${ALPINE_IMAGE_VERSION}"
+    build:
+      context: .
+      dockerfile: alpine/Dockerfile
+      target: build
+      args:
+        base_image_version: "${ALPINE_IMAGE_VERSION}"
+    container_name: "${PROJECT_NAME}:alpine-${ALPINE_IMAGE_VERSION}"
+    hostname: "${PROJECT_NAME}:alpine-${ALPINE_IMAGE_VERSION}"
+
+  debian:
+    image: "${PROJECT_NAME}:debian-${DEBIAN_IMAGE_VERSION}"
+    build:
+      context: .
+      dockerfile: debian/Dockerfile
+      target: build
+      args:
+        base_image_version: "${DEBIAN_IMAGE_VERSION}"
+    container_name: "${PROJECT_NAME}:debian-${DEBIAN_IMAGE_VERSION}"
+    hostname: "${PROJECT_NAME}:debian-${DEBIAN_IMAGE_VERSION}"
+
+  ubuntu:
+    image: "${PROJECT_NAME}:ubuntu-${UBUNTU_IMAGE_VERSION}"
+    build:
+      context: .
+      dockerfile: ubuntu/Dockerfile
+      target: build
+      args:
+        base_image_version: "${UBUNTU_IMAGE_VERSION}"
+    container_name: "${PROJECT_NAME}:ubuntu-${UBUNTU_IMAGE_VERSION}"
+    hostname: "${PROJECT_NAME}:ubuntu-${UBUNTU_IMAGE_VERSION}"
