@@ -1,7 +1,6 @@
-ARG base_image_name=alpine
 ARG base_image_version=3.12
 
-FROM ${base_image_name}:${base_image_version} as runtime
+FROM alpine:${base_image_version} as runtime
 
 RUN \
   apk add --update --no-cache --force-overwrite \
