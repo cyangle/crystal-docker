@@ -1,5 +1,8 @@
 ARG base_image_version=20.04
+
 FROM ubuntu:${base_image_version} as runtime
+
+ARG crystal_version=latest
 
 RUN \
   apt-get update && \

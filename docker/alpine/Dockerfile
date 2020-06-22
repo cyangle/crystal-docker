@@ -2,6 +2,8 @@ ARG base_image_version=3.12
 
 FROM alpine:${base_image_version} as runtime
 
+ARG crystal_version=latest
+
 RUN \
   apk add --update --no-cache --force-overwrite \
     # core dependencies
