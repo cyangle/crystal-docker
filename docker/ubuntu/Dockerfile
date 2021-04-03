@@ -26,9 +26,9 @@ FROM runtime as build
 
 RUN \
   apt-get update && \
-  apt-get install -y build-essential llvm-11 lld-11 lldb-11 libedit-dev gdb && \
+  apt-get install -y build-essential llvm-10 lld-10 lldb-10 libedit-dev gdb && \
   apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN ln -sf /usr/bin/ld.lld-11 /usr/bin/ld.lld
+RUN ln -sf /usr/bin/ld.lld-10 /usr/bin/ld.lld
 
 CMD ["/bin/sh"]
