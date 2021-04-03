@@ -15,11 +15,10 @@ RUN \
 
 COPY download_lastest_crystal_package.sh .
 
-RUN ["/bin/sh", "download_lastest_crystal_package.sh", "debian"]
-
-RUN rm download_lastest_crystal_package.sh
-# nightly packages do not have valid version numbers
-RUN dpkg --force-bad-version -i /tmp/crystal.deb
+RUN ./download_lastest_crystal_package.sh debian \
+  && dpkg --force-bad-version -i /tmp/crystal.deb \
+  && rm /tmp/crystal.deb \
+  && rm download_lastest_crystal_package.sh
 
 CMD ["/bin/sh"]
 
@@ -27,7 +26,9 @@ FROM runtime as build
 
 RUN \
   apt-get update && \
-  apt-get install -y build-essential llvm-10 lld-10 libedit-dev gdb && \
+  apt-get install -y build-essential llvm-11 lld-11 lldb-11 libedit-dev gdb && \
   apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN ln -sf /usr/bin/ld.lld-11 /usr/bin/ld.lld
 
 CMD ["/bin/sh"]

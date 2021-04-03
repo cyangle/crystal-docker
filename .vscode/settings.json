@@ -1,0 +1,24 @@
+{
+  "saveAndRunExt": {
+    "watchFolderPath": "**/run/*",
+    "commands": [
+      {
+        "cmd": [
+          "workbench.action.debug.start"
+        ],
+        "isAsync": false,
+        "isShellCommand": false,
+        "match": ".*/test\\.txt"
+      },
+      {
+        "cmd": [
+          "echo ${file}",
+          "echo ${workspaceRoot}"
+        ],
+        "isAsync": false,
+        "isShellCommand": true,
+        "match": ".*/test\\.txt"
+      }
+    ]
+  }
+}
